@@ -115,7 +115,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1="\[\033[1;32m\]\342\224\214\342\224\200$([[ $(/opt/vpnbash.sh) == *"10."* ]] && echo "[\[\033[1;34m\]$(/opt/vpnserver.sh)\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]$(/opt/vpnbash.sh)\[\033[1;32m\]]\342\224\200")[\[\033[1;37m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\w\[\033[1;32m\]]\n\[\033[1;32m\]\342\224\224\342\224\200\342\224\200\342\225\274 [\[\e[01;33m\]??\[\e[01;32m\]]\\$ \[\e[0m\]"
+    PS1="\[\033[1;32m\]\342\224\214\342\224\200$([[ $(/opt/pwnbox/vpnbash.sh) == *"10."* ]] && echo "[\[\033[1;34m\]$(/opt/pwnbox/vpnserver.sh)\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]$(/opt/pwnbox/vpnbash.sh)\[\033[1;32m\]]\342\224\200")[\[\033[1;37m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\w\[\033[1;32m\]]\n\[\033[1;32m\]\342\224\224\342\224\200\342\224\200\342\225\274 [\[\e[01;33m\]??\[\e[01;32m\]]\\$ \[\e[0m\]"
 else
     PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
 fi
@@ -140,7 +140,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\033[1;32m\]\342\224\200\$([[ \$(/opt/vpnbash.sh) == *\"10.\"* ]] && echo \"[\[\033[1;34m\]\$(/opt/vpnserver.sh)\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\$(/opt/vpnbash.sh)\[\033[1;32m\]]\342\224\200\")[\[\033[1;37m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\w\[\033[1;32m\]]\\$\[\e[0m\] "
+    PS1="\[\033[1;32m\]\342\224\200\$([[ \$(/opt/pwnbox/vpnbash.sh) == *\"10.\"* ]] && echo \"[\[\033[1;34m\]\$(/opt/pwnbox/vpnserver.sh)\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\$(/opt/pwnbox/vpnbash.sh)\[\033[1;32m\]]\342\224\200\")[\[\033[1;37m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\w\[\033[1;32m\]]\\$\[\e[0m\] "
     ;;
 *)
     ;;
@@ -199,7 +199,7 @@ Then reload your bashrc file:
 
 > NOTE 2: Pwnbox now has an **updated** terminal. This is purely by choice so if you want to use what Pwnbox has, replace the "PS1" line above that has "xterm*|rxvt*)..." with this new *PS1* output:
 
-`\[\033[1;32m\]\342\224\200$([[ $(/opt/vpnbash.sh) == *"10."* ]] && echo "[\[\033[1;34m\]$(/opt/vpnserver.sh)\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]$(/opt/vpnbash.sh)\[\033[1;32m\]]\342\224\200")[\[\033[1;37m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\w\[\033[1;32m\]]\$\[\e[0m\]`
+`\[\033[1;32m\]\342\224\200$([[ $(/opt/pwnbox/vpnbash.sh) == *"10."* ]] && echo "[\[\033[1;34m\]$(/opt/pwnbox/vpnserver.sh)\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]$(/opt/pwnbox/vpnbash.sh)\[\033[1;32m\]]\342\224\200")[\[\033[1;37m\]\u\[\033[01;32m\]@\[\033[01;34m\]\h\[\033[1;32m\]]\342\224\200[\[\033[1;37m\]\w\[\033[1;32m\]]\$\[\e[0m\]`
 
 ### Powershell terminal (optional)
 
@@ -262,7 +262,7 @@ Then on the top panel, right click on the "notepad" and select "properties". In 
 
 ### To get the 'ping panel'
 
-Right click on a blank space on the top panel and choose "Add to Panel". In the search bar, type "command", select "command" then click "add". The current time should populate on the top panel. Right click on it, and in the command section, paste in `/opt/vpnpanel.sh`, with an interval of "5" seconds. It should show "HTB VPN: Disconnected" unless you are on the vpn.
+Right click on a blank space on the top panel and choose "Add to Panel". In the search bar, type "command", select "command" then click "add". The current time should populate on the top panel. Right click on it, and in the command section, paste in `/opt/pwnbox/vpnpanel.sh`, with an interval of "5" seconds. It should show "HTB VPN: Disconnected" unless you are on the vpn.
 
 ### To get the "processor" menu
 
@@ -295,7 +295,7 @@ htbip=$(ip addr | grep tun0 | grep inet | grep 10. | tr -s " " | cut -d " " -f 3
 
 if [[ $htbip == *"10."* ]]
 then
-   echo "[%B%F{%(#.red.blue)}$(/opt/vpnserver.sh)%b%F{%(#.blue.green)}]-[%B%F{%(#.red.blue)}$htbip%b%F{%(#.blue.green)}]-"
+   echo "[%B%F{%(#.red.blue)}$(/opt/pwnbox/vpnserver.sh)%b%F{%(#.blue.green)}]-[%B%F{%(#.red.blue)}$htbip%b%F{%(#.blue.green)}]-"
 else
    echo ""
 fi
@@ -304,9 +304,9 @@ fi
 
 3. (optional) If you haven't switched your kali terminal to zsh, do that with `chsh -s /usr/bin/zsh`. Then log out, log back in. You should have a cool looking prompt
 
-4. Update the PS1 variable in `~/.zshrc` (using nano or your favorite editor) to `PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)──}$(/opt/vpnbash.sh)(%B%F{%(#.red.blue)}%n%(#.💀.㉿)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '`
+4. Update the PS1 variable in `~/.zshrc` (using nano or your favorite editor) to `PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)──}$(/opt/pwnbox/vpnbash.sh)(%B%F{%(#.red.blue)}%n%(#.💀.㉿)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '`
 
-If you want to test it out before changing your .zshrc file, use `export PS1='%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)──}$(/opt/vpnbash.sh)(%B%F{%(#.red.blue)}%n%(#.💀.㉿)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+If you want to test it out before changing your .zshrc file, use `export PS1='%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)──}$(/opt/pwnbox/vpnbash.sh)(%B%F{%(#.red.blue)}%n%(#.💀.㉿)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '`
 
 # Conclusion
