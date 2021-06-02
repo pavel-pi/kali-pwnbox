@@ -231,7 +231,7 @@ Copy icons and sublime text to machine:
 
 `sudo cp -R ~/gitclones/pwnbox/htb /usr/share/icons/`
 
-`sudo mkdir /usr/share/themes/HackTheBox && sudo cp ~/gitclones/pwnbox/index.theme /usr/share/themes/HackTheBox`
+`sudo mkdir /usr/share/themes/KaliPwnbox && sudo cp ./index.theme /usr/share/themes/KaliPwnbox`
 
 
 Now go to the top menu bar and choose:
