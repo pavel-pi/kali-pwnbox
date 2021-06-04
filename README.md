@@ -87,6 +87,9 @@ timedatectl set-timezone Europe/Berlin
 ######
 # Install Tools
 
+# Pip2
+curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
+
 # Impacket
 cd ~/Downloads
 git clone https://github.com/SecureAuthCorp/impacket.git
