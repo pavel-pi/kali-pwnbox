@@ -23,9 +23,7 @@ touch ~/.hushlogin
 # Install HTB theme
 cp /opt/pwnbox/zsh/hackthebox.zsh-theme $ZSH_CUSTOM/themes/
 sed -i s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"hackthebox\"/ ~/.zshrc
-# Set Prompt
-$ echo "# KaliPwnbox\nPS1=\$'%F{%(#.blue.green)}┌──\${debian_chroot:+(\$debian_chroot)──}\$(/opt/pwnbox/vpnbash.sh)(%B%F{%(#.red.blue)}%n%(#.💀.@)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\\\\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '" >> .zshrc
-$ source .zshrc 
+source ~/.zshrc
 # Update System
 $ sudo apt update
 $ sudo apt -y full-upgrade
