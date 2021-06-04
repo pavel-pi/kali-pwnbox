@@ -61,6 +61,9 @@ cp /opt/pwnbox/zsh/hackthebox.zsh-theme $ZSH_CUSTOM/themes/
 sed -i s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"hackthebox\"/ ~/.zshrc
 source ~/.zshrc
 
+# tmux Colors
+echo 'TERM=xterm-256color' >>~/.zshrc
+
 # Change QT5 theme & icons
 qt5_config="$HOME/.config/qt5ct/qt5ct.conf"
 sed -i 's/\(color_scheme_path=\).*/\1\/usr\/share\/qt5ct\/colors\/Kali-Light.conf/' $qt5_config
