@@ -90,6 +90,7 @@ timedatectl set-timezone Europe/Berlin
 # Pip2
 curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
 echo 'export PATH=$HOME/.local/bin:$PATH' >>~/.zshrc
+pip install setuptools
 
 # Impacket
 cd ~/Downloads
