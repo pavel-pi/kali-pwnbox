@@ -1,5 +1,7 @@
 # README
 
+Download a fresh Kali VM from [here](https://www.kali.org/get-kali/#kali-virtual-machines), create a VM in VirtualBox or VMware and change from NAT to Bridge.
+
 ```bash
 joplin_webdav_url=''
 joplin_webdav_username=''
