@@ -63,8 +63,15 @@ cp /opt/pwnbox/zsh/hackthebox.zsh-theme $ZSH_CUSTOM/themes/
 sed -i s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"hackthebox\"/ ~/.zshrc
 source ~/.zshrc
 
+# Set default terminal to terminator 
+gsettings set org.mate.applications-terminal exec 'terminator'
+
+# Terminator - Use colors from system theme
+lineno=$(awk '/\[\[default\]\]/{ print NR; exit }' ~/.config/terminator/config)
+sed -i "$(($lineno+1))iuse_theme_colors = True" ~/.config/terminator/config
+
 # tmux Colors
-echo 'TERM=xterm-256color' >>~/.zshrc
+#echo 'TERM=xterm-256color' >>~/.zshrc
 
 # Change QT5 theme & icons
 qt5_config="$HOME/.config/qt5ct/qt5ct.conf"
@@ -112,6 +119,30 @@ sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value=
 sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_url' where key='sync.5.path'"
 sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_username' where key='sync.5.username'"
 sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_password' where key='sync.5.password'"
+
+# AppImageLauncher
+tempInstallFile=$HOME/Downloads/appimagelauncher.deb
+curl -s https://api.github.com/repos/TheAssassin/AppImageLauncher/releases/latest \
+| grep "browser_download_url" \
+| grep 'bionic_amd64.deb' \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -O $tempInstallFile -qi - \
+&& sudo dpkg -i $tempInstallFile \
+&& rm $tempInstallFile
+
+
+# Obisidian
+AppImagesLocation=$HOME/Applications
+curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest \
+| grep "browser_download_url" \
+| grep "AppImage" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -P $AppImagesLocation -qi -
+chmod +x $AppImagesLocation/Obsidian*.AppImage
+echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
+
 
 # inspiration from:
 # https://gist.github.com/jayluxferro/5cb6ee45726bd30264918df2b0553b70
