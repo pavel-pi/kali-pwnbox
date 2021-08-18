@@ -1,0 +1,74 @@
+#!/bin/bash
+
+AppImagesLocation=$HOME/Applications
+
+# must be run as default user
+if (( $EUID == 0 )); then
+    echo "Restart without root ..."
+    exit
+fi
+
+# run setup.sh 
+echo -e "\e[33mRunning Setup Script as root ...\e[0m"
+./setup.sh
+
+# Set theme
+echo -e "\e[33mSet Theme ...\e[0m"
+gsettings set org.mate.peripherals-mouse cursor-theme 'Breeze'
+gsettings set org.mate.interface gtk-theme 'ARK-Dark'
+gsettings set org.mate.Marco.general theme 'ARK-Dark'
+gsettings set org.mate.interface icon-theme 'Material-Black-Lime-Numix-FLAT'
+gsettings set org.mate.peripherals-mouse cursor-size 24
+gsettings set org.gnome.desktop.interface cursor-size 24
+gsettings set org.mate.interface gtk-color-scheme "base_color:#404552,fg_color:#D3DAE3,tooltip_fg_color:#FFFFFF,selected_bg_color:#5294E2,selected_fg_color:#FFFFFF,text_color:#D3DAE3,bg_color:#383C4A,insensitive_bg_color:#3e4350,insensitive_fg_color:#7c818c,notebook_bg:#404552,dark_sidebar_bg:#353945,tooltip_bg_color:#353945,link_color:#5294E2,menu_bg:#383C4A"
+gsettings set org.mate.background picture-filename '/usr/share/backgrounds/htb.jpg'
+gsettings set org.mate.background picture-options 'zoom'
+
+# Set keyboard layout
+echo -e "\e[33mSet Keyboard Layout ...\e[0m"
+gsettings set org.mate.peripherals-keyboard-xkb.kbd layouts "['de']"
+
+# open quick launcher with Windows/Super key (default is ALT + F2)
+echo -e "\e[33mSet Windows Key ...\e[0m"
+gsettings set org.mate.Marco.global-keybindings panel-run-dialog 'Super_L'
+
+# Set default terminal to terminator
+echo -e "\e[33mSet Terminator as default terminal ...\e[0m"
+gsettings set org.mate.applications-terminal exec 'terminator'
+
+# Install oh-my-zsh
+echo -e "\e[33mInstall Oh My Zsh ...\e[0m"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+touch $HOME/.hushlogin
+
+# Install HTB theme
+echo -e "\e[33mInstall Oh My Zsh HTB Theme ...\e[0m"
+cp /opt/pwnbox/zsh/hackthebox.zsh-theme $HOME/.oh-my-zsh/themes/
+sed -i s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"hackthebox\"/ $HOME/.zshrc
+#source ~/.zshrc
+
+# Terminator - Use colors from system theme
+#lineno=$(awk '/\[\[default\]\]/{ print NR; exit }' $HOME/.config/terminator/config)
+#sed -i "$(($lineno+1))iuse_theme_colors = True" $HOME/.config/terminator/config
+
+# Change QT5 theme & icons
+echo -e "\e[33mChange QT5 Theme ...\e[0m"
+qt5_config="$HOME/.config/qt5ct/qt5ct.conf"
+sed -i 's/\(color_scheme_path=\).*/\1\/usr\/share\/qt5ct\/colors\/Kali-Light.conf/' $qt5_config
+sed -i 's/\(icon_theme=\).*/\1Flat-Remix-Blue-Light/' $qt5_config
+
+# Add App Images dir to PATH
+echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
+
+# Obisidian
+echo -e "\e[33mInstall Obsidian ...\e[0m"
+curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest \
+| grep "browser_download_url" \
+| grep "AppImage" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -P $AppImagesLocation -qi -
+chmod +x $AppImagesLocation/Obsidian*.AppImage
+
+
+echo -e "\e[33mFinish! Now re-logon and enjoy...\e[0m"
