@@ -10,7 +10,7 @@ fi
 
 # run setup.sh 
 echo -e "\e[33mRunning Setup Script as root ...\e[0m"
-./setup.sh
+/opt/pwnbox/setup.sh
 
 # Set theme
 echo -e "\e[33mSet Theme ...\e[0m"
