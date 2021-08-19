@@ -8,20 +8,20 @@ fi
 
 # update system
 echo -e "\e[31mUpgrade Packages ...\e[0m"
-apt update > /dev/null
-apt -y dist-upgrade > /dev/null
-apt -y autoremove > /dev/null
+apt update
+apt -y dist-upgrade
+apt -y autoremove
 
 # install mate & remove xfce
 echo -e "\e[31mInstall MATE ...\e[0m"
-apt -y install kali-desktop-mate > /dev/null
-apt purge -y --autoremove kali-desktop-xfce xfce4 xfce4-places-plugin xfce4-goodies > /dev/null
+apt -y install kali-desktop-mate 
+apt purge -y --autoremove kali-desktop-xfce xfce4 xfce4-places-plugin xfce4-goodies 
 #apt-get install kali-defaults kali-root-login desktop-base mate-desktop-environment-extra
 
 # Install Parrot themes
 echo -e "\e[31mInstall Parrot OS Themes ...\e[0m"
 wget -q http://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/parrot-themes_3.2%2Bparrot3_all.deb -O /tmp/parrot.deb
-apt -y install /tmp/parrot.deb > /dev/null
+apt -y install /tmp/parrot.deb 
 
 # Copy theme files
 echo -e "\e[31mCopy Icons and Wallpapers ...\e[0m"
@@ -31,7 +31,7 @@ cp -Rv /opt/pwnbox/htb/ /usr/share/icons/
 
 # Install terminator
 echo -e "\e[31mInstall Terminator ...\e[0m"
-apt install terminator -y > /dev/null
+apt install terminator -y 
 
 # Set Timezone
 echo -e "\e[31mSet Timezone ...\e[0m"
