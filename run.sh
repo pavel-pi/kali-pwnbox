@@ -57,10 +57,14 @@ qt5_config="$HOME/.config/qt5ct/qt5ct.conf"
 sed -i 's/\(color_scheme_path=\).*/\1\/usr\/share\/qt5ct\/colors\/Kali-Light.conf/' $qt5_config
 sed -i 's/\(icon_theme=\).*/\1Flat-Remix-Blue-Light/' $qt5_config
 
+# Add Alias for APT upgrade
+echo "\n# Upgrade Packages\nalias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y autoremove\"" >> $HOME/.zshrc
+
 # Add App Images dir to PATH
 echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
 
 # Obisidian
+mkdir -p $AppImagesLocation
 echo -e "\e[33mInstall Obsidian ...\e[0m"
 curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest \
 | grep "browser_download_url" \
@@ -70,5 +74,11 @@ curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/lates
 | wget -P $AppImagesLocation -qi -
 chmod +x $AppImagesLocation/Obsidian*.AppImage
 
+# appimaged
+wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases -O - | grep "appimaged-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2) -P $AppImagesLocation
+chmod +x $AppImagesLocation/appimaged-*.AppImage
+$AppImagesLocation/appimaged-*.AppImage
+
 
 echo -e "\e[33mFinish! Now re-logon and enjoy...\e[0m"
+read -n 1 -s -r 

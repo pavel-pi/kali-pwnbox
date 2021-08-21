@@ -47,7 +47,7 @@ echo -e "\e[31mSetup Complete!\e[0m"
 # Pip2
 curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
 echo 'export PATH=$HOME/.local/bin:$PATH' >>~/.zshrc
-#pip install setuptools
+pip install setuptools
 
 # Joplin
 #wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
