@@ -79,6 +79,10 @@ wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/re
 chmod +x $AppImagesLocation/appimaged-*.AppImage
 $AppImagesLocation/appimaged-*.AppImage
 
+# Pip2
+curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
+echo 'export PATH=$HOME/.local/bin:$PATH' >>~/.zshrc
+pip install setuptools
 
 echo -e "\e[33mFinish! Now re-logon and enjoy...\e[0m"
 read -n 1 -s -r 
