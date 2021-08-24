@@ -44,11 +44,6 @@ echo -e "\e[31mSetup Complete!\e[0m"
 ######
 # Install Tools
 
-# Pip2
-curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
-echo 'export PATH=$HOME/.local/bin:$PATH' >>~/.zshrc
-pip install setuptools
-
 # Joplin
 #wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
 #sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='DD.MM.YYYY' where key='dateFormat'"
@@ -58,16 +53,3 @@ pip install setuptools
 #sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_url' where key='sync.5.path'"
 #sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_username' where key='sync.5.username'"
 #sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_password' where key='sync.5.password'"
-
-# AppImageLauncher
-#tempInstallFile=$HOME/Downloads/appimagelauncher.deb
-#curl -s https://api.github.com/repos/TheAssassin/AppImageLauncher/releases/latest \
-#| grep "browser_download_url" \
-#| grep 'bionic_amd64.deb' \
-#| cut -d : -f 2,3 \
-#| tr -d \" \
-#| wget -O $tempInstallFile -qi - \
-#&& sudo dpkg -i $tempInstallFile \
-#&& rm $tempInstallFile
-
-
