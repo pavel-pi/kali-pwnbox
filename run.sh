@@ -67,19 +67,19 @@ echo "alias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y aut
 echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
 
 # Create Plank autostart file
-mkdir -p $HOME/.config/autostart/
-tee $HOME/.config/autostart/plank.desktop > /dev/null <<EOT
-[Desktop Entry]
-Type=Application
-Exec=plank
-Hidden=false
-X-MATE-Autostart-enabled=true
-Name[en_US]=Plank
-Name=Plank
-Comment[en_US]=
-Comment=
-X-MATE-Autostart-Delay=0
-EOT
+#mkdir -p $HOME/.config/autostart/
+#tee $HOME/.config/autostart/plank.desktop > /dev/null <<EOT
+#[Desktop Entry]
+#Type=Application
+#Exec=plank
+#Hidden=false
+#X-MATE-Autostart-enabled=true
+#Name[en_US]=Plank
+#Name=Plank
+#Comment[en_US]=
+#Comment=
+#X-MATE-Autostart-Delay=0
+#EOT
 
 # Copy Plank dock items
 mkdir -p $HOME/.config/plank/dock1/launchers
