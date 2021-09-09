@@ -41,7 +41,7 @@ apt install code-oss -y
 apt install dconf-cli -y
 
 # Install plank bar
-apt install plank -y
+#apt install plank -y
 
 # Set Timezone
 echo -e "\e[31mSet Timezone ...\e[0m"
