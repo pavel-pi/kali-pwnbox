@@ -37,7 +37,7 @@ echo -e "\e[33mRunning Setup Script as root ...\e[0m"
 #gsettings set org.mate.applications-terminal exec 'terminator'
 
 # load dconf settings
-dconf load / < htb.dconf
+dconf load / < /opt/pwnbox/htb.dconf
 
 # Install oh-my-zsh
 echo -e "\e[33mInstall Oh My Zsh ...\e[0m"
