@@ -104,7 +104,7 @@ $AppImagesLocation/appimaged-*.AppImage
 # Pip2
 curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
 echo 'export PATH=$HOME/.local/bin:$PATH' >>~/.zshrc
-pip install setuptools
+$HOME/.local/bin/pip install setuptools
 
 echo -e "\e[33mFinish! Now re-logon and enjoy...\e[0m"
 read -n 1 -s -r 
