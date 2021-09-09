@@ -31,7 +31,8 @@ cp -Rv /opt/pwnbox/htb/ /usr/share/icons/
 
 # Install terminator
 echo -e "\e[31mInstall Terminator ...\e[0m"
-apt install terminator -y 
+apt install terminator -y
+sed -i 's/Icon=terminator/Icon=\/usr\/share\/icons\/htb\/bash.svg/' /usr/share/applications/terminator.desktop
 
 # Set Timezone
 echo -e "\e[31mSet Timezone ...\e[0m"
