@@ -81,6 +81,10 @@ Comment=
 X-MATE-Autostart-Delay=0
 EOT
 
+# Copy Plank dock items
+mkdir -p $HOME/.config/plank/dock1/launchers
+cp /opt/pwnbox/plank/dock1/launchers/* $HOME/.config/plank/dock1/launchers
+
 # Obisidian
 mkdir -p $AppImagesLocation
 echo -e "\e[33mInstall Obsidian ...\e[0m"
