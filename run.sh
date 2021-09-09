@@ -58,7 +58,7 @@ sed -i 's/\(color_scheme_path=\).*/\1\/usr\/share\/qt5ct\/colors\/Kali-Light.con
 sed -i 's/\(icon_theme=\).*/\1Flat-Remix-Blue-Light/' $qt5_config
 
 # Add Alias for APT upgrade
-echo "\n# Upgrade Packages\nalias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y autoremove\"" >> $HOME/.zshrc
+echo "alias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y autoremove\"" >> $HOME/.zshrc
 
 # Add App Images dir to PATH
 echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
