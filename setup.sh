@@ -34,6 +34,9 @@ echo -e "\e[31mInstall Terminator ...\e[0m"
 apt install terminator -y
 sed -i 's/Icon=terminator/Icon=\/usr\/share\/icons\/htb\/bash.svg/' /usr/share/applications/terminator.desktop
 
+# Install vscode
+apt install code-oss -y
+
 # Install dconf
 apt install dconf-cli -y
 
