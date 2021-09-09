@@ -67,7 +67,7 @@ echo "alias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y aut
 echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
 
 # Create Plank autostart file
-tee .config/autostart/plank.desktop > /dev/null <<EOT
+tee $HOME/.config/autostart/plank.desktop > /dev/null <<EOT
 [Desktop Entry]
 Type=Application
 Exec=plank
