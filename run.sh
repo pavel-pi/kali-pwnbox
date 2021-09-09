@@ -13,28 +13,31 @@ echo -e "\e[33mRunning Setup Script as root ...\e[0m"
 /opt/pwnbox/setup.sh
 
 # Set theme
-echo -e "\e[33mSet Theme ...\e[0m"
-gsettings set org.mate.peripherals-mouse cursor-theme 'Breeze'
-gsettings set org.mate.interface gtk-theme 'ARK-Dark'
-gsettings set org.mate.Marco.general theme 'ARK-Dark'
-gsettings set org.mate.interface icon-theme 'Material-Black-Lime-Numix-FLAT'
-gsettings set org.mate.peripherals-mouse cursor-size 24
-gsettings set org.gnome.desktop.interface cursor-size 24
-gsettings set org.mate.interface gtk-color-scheme "base_color:#404552,fg_color:#D3DAE3,tooltip_fg_color:#FFFFFF,selected_bg_color:#5294E2,selected_fg_color:#FFFFFF,text_color:#D3DAE3,bg_color:#383C4A,insensitive_bg_color:#3e4350,insensitive_fg_color:#7c818c,notebook_bg:#404552,dark_sidebar_bg:#353945,tooltip_bg_color:#353945,link_color:#5294E2,menu_bg:#383C4A"
-gsettings set org.mate.background picture-filename '/usr/share/backgrounds/htb.jpg'
-gsettings set org.mate.background picture-options 'zoom'
+#echo -e "\e[33mSet Theme ...\e[0m"
+#gsettings set org.mate.peripherals-mouse cursor-theme 'Breeze'
+#gsettings set org.mate.interface gtk-theme 'ARK-Dark'
+#gsettings set org.mate.Marco.general theme 'ARK-Dark'
+#gsettings set org.mate.interface icon-theme 'Material-Black-Lime-Numix-FLAT'
+#gsettings set org.mate.peripherals-mouse cursor-size 24
+#gsettings set org.gnome.desktop.interface cursor-size 24
+#gsettings set org.mate.interface gtk-color-scheme "base_color:#404552,fg_color:#D3DAE3,tooltip_fg_color:#FFFFFF,selected_bg_color:#5294E2,selected_fg_color:#FFFFFF,text_color:#D3DAE3,bg_color:#383C4A,insensitive_bg_color:#3e4350,insensitive_fg_color:#7c818c,notebook_bg:#404552,dark_sidebar_bg:#353945,tooltip_bg_color:#353945,link_color:#5294E2,menu_bg:#383C4A"
+#gsettings set org.mate.background picture-filename '/usr/share/backgrounds/htb.jpg'
+#gsettings set org.mate.background picture-options 'zoom'
 
 # Set keyboard layout
-echo -e "\e[33mSet Keyboard Layout ...\e[0m"
-gsettings set org.mate.peripherals-keyboard-xkb.kbd layouts "['de']"
+#echo -e "\e[33mSet Keyboard Layout ...\e[0m"
+#gsettings set org.mate.peripherals-keyboard-xkb.kbd layouts "['de']"
 
 # open quick launcher with Windows/Super key (default is ALT + F2)
-echo -e "\e[33mSet Windows Key ...\e[0m"
-gsettings set org.mate.Marco.global-keybindings panel-run-dialog 'Super_L'
+#echo -e "\e[33mSet Windows Key ...\e[0m"
+#gsettings set org.mate.Marco.global-keybindings panel-run-dialog 'Super_L'
 
 # Set default terminal to terminator
-echo -e "\e[33mSet Terminator as default terminal ...\e[0m"
-gsettings set org.mate.applications-terminal exec 'terminator'
+#echo -e "\e[33mSet Terminator as default terminal ...\e[0m"
+#gsettings set org.mate.applications-terminal exec 'terminator'
+
+# load dconf settings
+dconf load / < htb.dconf
 
 # Install oh-my-zsh
 echo -e "\e[33mInstall Oh My Zsh ...\e[0m"
