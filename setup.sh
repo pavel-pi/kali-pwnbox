@@ -34,6 +34,12 @@ echo -e "\e[31mInstall Terminator ...\e[0m"
 apt install terminator -y
 sed -i 's/Icon=terminator/Icon=\/usr\/share\/icons\/htb\/bash.svg/' /usr/share/applications/terminator.desktop
 
+# Install dconf
+apt install dconf-cli -y
+
+# Install plank bar
+apt install plank -y
+
 # Set Timezone
 echo -e "\e[31mSet Timezone ...\e[0m"
 timedatectl set-timezone Europe/Berlin
