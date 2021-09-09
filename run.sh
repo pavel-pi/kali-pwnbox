@@ -63,6 +63,20 @@ echo "alias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y aut
 # Add App Images dir to PATH
 echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
 
+# Create Plank autostart file
+tee .config/autostart/plank.desktop > /dev/null <<EOT
+[Desktop Entry]
+Type=Application
+Exec=plank
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=Plank
+Name=Plank
+Comment[en_US]=
+Comment=
+X-MATE-Autostart-Delay=0
+EOT
+
 # Obisidian
 mkdir -p $AppImagesLocation
 echo -e "\e[33mInstall Obsidian ...\e[0m"
