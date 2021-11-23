@@ -20,7 +20,7 @@ apt purge -y --autoremove kali-desktop-xfce xfce4 xfce4-places-plugin xfce4-good
 
 # Install Parrot themes
 echo -e "\e[31mInstall Parrot OS Themes ...\e[0m"
-wget -q http://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/parrot-themes_3.2%2Bparrot3_all.deb -O /tmp/parrot.deb
+wget -q http://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/parrot-themes_3.4%2Bparrot3_all.deb -O /tmp/parrot.deb
 apt -y install /tmp/parrot.deb 
 
 # Copy theme files
