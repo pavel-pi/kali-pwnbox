@@ -97,9 +97,9 @@ curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/lates
 chmod +x $AppImagesLocation/Obsidian*.AppImage
 
 # appimaged
-wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases -O - | grep "appimaged-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2) -P $AppImagesLocation
-chmod +x $AppImagesLocation/appimaged-*.AppImage
-$AppImagesLocation/appimaged-*.AppImage
+#wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases -O - | grep "appimaged-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2) -P $AppImagesLocation
+#chmod +x $AppImagesLocation/appimaged-*.AppImage
+#$AppImagesLocation/appimaged-*.AppImage
 
 # Pip2
 curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
