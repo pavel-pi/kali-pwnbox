@@ -20,8 +20,8 @@ apt purge -y --autoremove kali-desktop-xfce xfce4 xfce4-places-plugin xfce4-good
 
 # Install Parrot themes
 echo -e "\e[31mInstall Parrot OS Themes ...\e[0m"
-wget -q https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/maia-icon-theme_3.4%2Bparrot3_all.deb -O /tmp/maia.deb
-wget -q http://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/parrot-themes_3.4%2Bparrot3_all.deb -O /tmp/parrot.deb
+wget -q https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/maia-icon-theme_3.4%2Bparrot4_all.deb -O /tmp/maia.deb
+wget -q https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/parrot-themes_3.4%2Bparrot4_all.deb -O /tmp/parrot.deb
 apt -y install /tmp/maia.deb
 apt -y install /tmp/parrot.deb 
 
