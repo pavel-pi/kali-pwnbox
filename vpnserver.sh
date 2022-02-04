@@ -8,6 +8,9 @@ vpn=$(ps aux | grep "/usr/sbin/openvpn" | awk -F '--remote' '{print $2}' | cut -
 if [[ $vpn == *"hackthebox"* ]]
 then
     echo $vpn | cut -d "." -f 1 | cut -d "-" -f 2-
-else
+elif [ -n "$vpn" ]
+then
     echo $vpn
+else
+    echo ""
 fi

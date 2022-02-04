@@ -3,7 +3,7 @@ htbip=$(ip addr | grep -E "(tun0|tap0)" | grep inet | grep -E "(10.|172.)" | tr 
 
 if [[ $htbip == *"10."* || $htbip == *"172."* ]]
 then
-   echo "[%B%F{%(#.red.blue)}$(/opt/pwnbox/vpnserver.sh)%b%F{%(#.blue.green)}]-[%B%F{%(#.red.blue)}$htbip%b%F{%(#.blue.green)}]-"
+   echo "$htbip"
 else
    echo ""
 fi

@@ -1,8 +1,8 @@
 # credits: https://github.com/ikirt/htb-ohmyzsh-theme
 
 # Custom Colors
-green='155'
-blue='14'
+green='118'
+blue='75'
 red='196'
 
 CURRENT_BG='NONE'
@@ -39,19 +39,18 @@ prompt_dir() {
 
 # VPN: htb vpn location
 prompt_vpn_loc() {
-  #this script can be found here https://github.com/theGuildHall/pwnbox
-  #htb_vpn_loc=`/opt/vpnserver.sh`
-  htb_vpn_loc=`cat /etc/openvpn/*.ovpn | grep "remote " | cut -d " " -f 2 | cut -d "." -f 1 | cut -d "-" -f 2-|head -n1` 2>/dev/null
-  if [[ -v $htb_vpn_loc ]]; then
-    echo -n  "%{%k%F{white}%}${htb_vpn_loc}%{%k%F{$green}%}]─["
+  #this script can be found here https://github.com/pavel-pi/kali-pwnbox
+  htb_vpn_loc=`/opt/pwnbox/vpnserver.sh`
+  if [[ -n $htb_vpn_loc ]]; then
+    echo -n  "%{%k%F{$blue}%}${htb_vpn_loc}%{%k%F{$green}%}]─["
   fi
 }
 
 # VPN: htb vpn IP
 prompt_vpn_ip() {
-   #this script can be found here https://github.com/theGuildHall/pwnbox
+   #this script can be found here https://github.com/pavel-pi/kali-pwnbox
    htb_vpn_ip=`/opt/pwnbox/vpnbash.sh`
-   if [[ -v $htb_vpn_ip ]]; then
+   if [[ -n $htb_vpn_ip ]]; then
      echo -n "%{%k%F{white}%}${htb_vpn_ip}%{%k%F{$green}%}]─["
    fi
 }
@@ -113,7 +112,7 @@ build_prompt() {
   prompt_end
 }
 
-PROMPT='%{%f%B%k%}$(build_prompt) %{$reset_color%}'
+PROMPT='%{%f%b%k%}$(build_prompt) %{$reset_color%}'
 
-zle_highlight=( default:bold,fg=$green )
+zle_highlight=( default:fg=$green )
 
