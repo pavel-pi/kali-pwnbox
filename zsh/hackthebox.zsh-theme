@@ -34,7 +34,7 @@ prompt_context() {
 
 # Dir: current working directory
 prompt_dir() {
-  echo -n  '%{%k%F{white}%}%~%{%k%F{$green}%}]'
+  echo -n "%{%k%F{white}%}%~%{%k%F{$green}%}]"
 }
 
 # VPN: htb vpn location
