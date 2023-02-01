@@ -39,6 +39,10 @@ echo -e "\e[33mRunning Setup Script as root ...\e[0m"
 # load dconf settings
 dconf load / < /opt/pwnbox/htb.dconf
 
+# Place Terminator config file
+mkdir -p $HOME/.config/terminator/
+cp /opt/pwnbox/terminator.conf $HOME/.config/terminator/config
+
 # Install oh-my-zsh
 echo -e "\e[33mInstall Oh My Zsh ...\e[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
