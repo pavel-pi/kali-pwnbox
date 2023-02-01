@@ -61,9 +61,13 @@ sed -i 's/\(color_scheme_path=\).*/\1\/usr\/share\/qt5ct\/colors\/Kali-Light.con
 sed -i 's/\(icon_theme=\).*/\1Flat-Remix-Blue-Light/' $qt5_config
 
 # Add Alias for APT upgrade
+echo '' >> $HOME/.zshrc
+echo '# alias for APT upgrades' >> $HOME/.zshrc
 echo "alias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y autoremove\"" >> $HOME/.zshrc
 
 # Add App Images dir to PATH
+echo '' >> $HOME/.zshrc
+echo '# Add App Images dir to PATH' >> $HOME/.zshrc
 echo 'export PATH=$HOME/Applications:$PATH' >>~/.zshrc
 
 # Create Plank autostart file
@@ -103,8 +107,27 @@ chmod +x $AppImagesLocation/Obsidian*.AppImage
 
 # Pip2
 curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
-echo 'export PATH=$HOME/.local/bin:$PATH' >>~/.zshrc
+echo '' >> $HOME/.zshrc
+echo '# Add PIP dir to PATH' >> $HOME/.zshrc
+echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
 $HOME/.local/bin/pip install setuptools
+
+# Add "Auto-suggestions based on the history" to .zshrc
+echo '' >> $HOME/.zshrc
+echo '# enable auto-suggestions based on the history' >> $HOME/.zshrc
+echo 'if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then' >> $HOME/.zshrc
+echo '    . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> $HOME/.zshrc
+echo '    # change suggestion color' >> $HOME/.zshrc
+echo '    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#999"' >> $HOME/.zshrc
+echo 'fi' >> $HOME/.zshrc
+
+# Add "enable command-not-found if installed" to .zshrc
+echo '' >> $HOME/.zshrc
+echo '# enable command-not-found if installed' >> $HOME/.zshrc
+echo 'if [ -f /etc/zsh_command_not_found ]; then' >> $HOME/.zshrc
+echo '    . /etc/zsh_command_not_found' >> $HOME/.zshrc
+echo 'fi' >> $HOME/.zshrc
+
 
 echo -e "\e[33mFinish! Now re-logon and enjoy...\e[0m"
 read -n 1 -s -r 
