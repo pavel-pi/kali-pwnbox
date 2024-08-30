@@ -64,10 +64,18 @@ qt5_config="$HOME/.config/qt5ct/qt5ct.conf"
 sed -i 's/\(color_scheme_path=\).*/\1\/usr\/share\/qt5ct\/colors\/Kali-Light.conf/' $qt5_config
 sed -i 's/\(icon_theme=\).*/\1Flat-Remix-Blue-Light/' $qt5_config
 
-# Add Alias for APT upgrade
+# Add Aliases
 echo '' >> $HOME/.zshrc
 echo '# alias for APT upgrades' >> $HOME/.zshrc
 echo "alias upd=\"sudo apt update && sudo apt -y full-upgrade && sudo apt -y autoremove\"" >> $HOME/.zshrc
+
+echo '' >> $HOME/.zshrc
+echo '# alias for syntax highlighting' >> $HOME/.zshrc
+echo "alias ccat='pygmentize -g'" >> $HOME/.zshrc
+
+echo '' >> $HOME/.zshrc
+echo '# alias for cheat sheet' >> $HOME/.zshrc
+echo 'chtsh() {  curl -s "https://cht.sh/$1" | less -R }' >> $HOME/.zshrc
 
 # Add App Images dir to PATH
 echo '' >> $HOME/.zshrc
