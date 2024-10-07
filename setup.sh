@@ -20,11 +20,16 @@ apt purge -y --autoremove kali-desktop-xfce xfce4 xfce4-places-plugin xfce4-good
 
 # Install Parrot themes
 echo -e "\e[31mInstall Parrot OS Themes ...\e[0m"
-wget -q https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/maia-icon-theme_4.3_all.deb -O /tmp/maia.deb
-wget -q https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/parrot-themes_4.3_all.deb -O /tmp/parrot.deb
-wget -q https://deb.parrotsec.org/parrot/pool/main/a/ara-icon-theme/ara-icon-theme_1.0.4_all.deb -O /tmp/ara.deb
+ara_url='https://deb.parrotsec.org/parrot/pool/main/a/ara-icon-theme/'
+par_url='https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/'
+ara_deb=$(curl -s "$ara_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep ara-icon-theme_.*_all.deb$)
+mai_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep maia-icon-theme_.*_all.deb$)
+par_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep parrot-themes_.*_all.deb$)
+wget -q "$par_url$mai_deb" -O /tmp/maia.deb
+wget -q "$ara_url$ara_deb" -O /tmp/ara.deb
+wget -q "$par_url$par_deb" -O /tmp/parrot.deb
 apt -y install /tmp/maia.deb
-apt -y install /tmp/ara.deb 
+apt -y install /tmp/ara.deb
 apt -y install /tmp/parrot.deb 
 
 # Copy theme files
