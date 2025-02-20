@@ -12,28 +12,6 @@ window-height=637
 window-is-maximized=false
 window-width=848
 
-[net/launchpad/plank/docks/dock1]
-alignment='center'
-auto-pinning=true
-current-workspace-only=false
-dock-items=['firefox-esr.dockitem', 'terminator.dockitem', 'code-oss.dockitem']
-hide-delay=0
-hide-mode='intelligent'
-icon-size=48
-items-alignment='center'
-lock-items=false
-monitor=''
-offset=0
-pinned-only=false
-position='bottom'
-pressure-reveal=false
-show-dock-item=false
-theme='Default'
-tooltips-enabled=true
-unhide-delay=0
-zoom-enabled=false
-zoom-percent=150
-
 [org/gnome/desktop/interface]
 cursor-size=24
 
@@ -113,7 +91,7 @@ theme='ARK-Dark'
 
 [org/mate/panel/general]
 history-mate-run=['plank']
-object-id-list=['menu-bar', 'notification-area', 'clock', 'object-0', 'object-2', 'object-3', 'object-4']
+object-id-list=['menu-bar', 'notification-area', 'clock', 'object-0', 'object-1', 'object-2', 'object-3', 'object-4', 'object-6']
 toplevel-id-list=['top', 'toplevel-0']
 
 [org/mate/panel/objects/clock]
@@ -143,17 +121,17 @@ position=10
 toplevel-id='top'
 
 [org/mate/panel/objects/object-0]
-launcher-location='/usr/share/applications/terminator.desktop'
+launcher-location='/usr/share/applications/mate-terminal.desktop'
 object-type='launcher'
 panel-right-stick=false
 position=276
 toplevel-id='top'
 
 [org/mate/panel/objects/object-1]
-launcher-location='firefox-esr-1.desktop'
+launcher-location='/usr/share/applications/code-oss.desktop'
 object-type='launcher'
 panel-right-stick=false
-position=259
+position=281
 toplevel-id='top'
 
 [org/mate/panel/objects/object-2]
