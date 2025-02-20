@@ -59,7 +59,7 @@ timeout-enable=false
 togglekeys-enable=false
 
 [org/mate/desktop/applications/terminal]
-exec='terminator'
+exec='mate-terminal'
 
 [org/mate/desktop/background]
 color-shading-type='vertical-gradient'
