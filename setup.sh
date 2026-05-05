@@ -22,15 +22,22 @@ apt purge -y --allow-remove-essential --autoremove kali-desktop-xfce xfce4 xfce4
 echo -e "\e[31mInstall Parrot OS Themes ...\e[0m"
 ara_url='https://deb.parrotsec.org/parrot/pool/main/a/ara-icon-theme/'
 par_url='https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/'
+ech_url='https://deb.parrotsec.org/parrot/pool/main/e/echo-themes/'
 ara_deb=$(curl -s "$ara_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep ara-icon-theme_.*_all.deb$ | sort -V | tail -n 1)
 mai_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep maia-icon-theme_.*_all.deb$ | sort -V | tail -n 1)
 par_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep parrot-themes_.*_all.deb$ | sort -V | tail -n 1)
+htb_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep hackthebox-icon-theme_.*_all.deb$ | sort -V | tail -n 1)
+ech_deb=$(curl -s "$ech_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep echo-themes_.*_all.deb$ | sort -V | tail -n 1)
 wget -q "$par_url$mai_deb" -O /tmp/maia.deb
 wget -q "$ara_url$ara_deb" -O /tmp/ara.deb
 wget -q "$par_url$par_deb" -O /tmp/parrot.deb
+wget -q "$par_url$htb_deb" -O /tmp/htb.deb
+wget -q "$ech_url$ech_deb" -O /tmp/echo.deb
 apt -y install /tmp/maia.deb
 apt -y install /tmp/ara.deb
-apt -y install /tmp/parrot.deb 
+apt -y install /tmp/htb.deb
+dpkg -i --force-overwrite /tmp/echo.deb
+apt -y install /tmp/parrot.deb
 
 # Copy theme files
 echo -e "\e[31mCopy Icons and Wallpapers ...\e[0m"
