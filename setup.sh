@@ -9,7 +9,7 @@ fi
 # update system
 echo -e "\e[31mUpgrade Packages ...\e[0m"
 apt update
-apt -y dist-upgrade
+#apt -y dist-upgrade
 apt -y autoremove
 
 # install mate & remove xfce
@@ -19,45 +19,23 @@ apt purge -y --allow-remove-essential --autoremove kali-desktop-xfce xfce4 xfce4
 #apt-get install kali-defaults kali-root-login desktop-base mate-desktop-environment-extra
 
 # Install Parrot themes
-echo -e "\e[31mInstall Parrot OS Themes ...\e[0m"
-ara_url='https://deb.parrotsec.org/parrot/pool/main/a/ara-icon-theme/'
-par_url='https://deb.parrotsec.org/parrot/pool/main/p/parrot-themes/'
-ech_url='https://deb.parrotsec.org/parrot/pool/main/e/echo-themes/'
-ara_deb=$(curl -s "$ara_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep ara-icon-theme_.*_all.deb$ | sort -V | tail -n 1)
-mai_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep maia-icon-theme_.*_all.deb$ | sort -V | tail -n 1)
-par_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep parrot-themes_.*_all.deb$ | sort -V | tail -n 1)
-htb_deb=$(curl -s "$par_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep hackthebox-icon-theme_.*_all.deb$ | sort -V | tail -n 1)
-ech_deb=$(curl -s "$ech_url" | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep echo-themes_.*_all.deb$ | sort -V | tail -n 1)
-wget -q "$par_url$mai_deb" -O /tmp/maia.deb
-wget -q "$ara_url$ara_deb" -O /tmp/ara.deb
-wget -q "$par_url$par_deb" -O /tmp/parrot.deb
-wget -q "$par_url$htb_deb" -O /tmp/htb.deb
-wget -q "$ech_url$ech_deb" -O /tmp/echo.deb
-apt -y install /tmp/maia.deb
-apt -y install /tmp/ara.deb
-apt -y install /tmp/htb.deb
-dpkg -i --force-overwrite /tmp/echo.deb
-apt -y install /tmp/parrot.deb
+git clone https://github.com/ParrotSec/parrot-themes /opt/parrot-themes
+cp -Rv /opt/parrot-themes/themes/ARK-Dark /usr/share/themes/
+cp -Rv /opt/parrot-themes/themes/* /usr/share/themes/
+cp -Rv /opt/parrot-themes/icons/* /usr/share/icons/
 
-# Copy theme files
-echo -e "\e[31mCopy Icons and Wallpapers ...\e[0m"
+# Copy wallpapers
+echo -e "\e[31mCopy Wallpapers ...\e[0m"
 cp -v /opt/pwnbox/htb*.jpg /usr/share/backgrounds/
-cp -Rv /opt/pwnbox/Material-Black-Lime-Numix-FLAT/ /usr/share/icons/
-cp -Rv /opt/pwnbox/htb/ /usr/share/icons/
-
-# Install terminator
-echo -e "\e[31mInstall Terminator ...\e[0m"
-apt install terminator -y
-sed -i 's/Icon=terminator/Icon=\/usr\/share\/icons\/htb\/bash.svg/' /usr/share/applications/terminator.desktop
 
 # Install vscode
-apt install code-oss -y
+#apt install code-oss -y
+
+# Install ghidra
+#apt install ghidra -y
 
 # Install dconf
 apt install dconf-cli -y
-
-# Install plank bar
-#apt install plank -y
 
 # Set Timezone
 echo -e "\e[31mSet Timezone ...\e[0m"
@@ -65,17 +43,3 @@ timedatectl set-timezone Europe/Berlin
 timedatectl show | grep Timezone
 
 echo -e "\e[31mSetup Complete!\e[0m"
-
-
-######
-# Install Tools
-
-# Joplin
-#wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
-#sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='DD.MM.YYYY' where key='dateFormat'"
-#sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='de_DE' where key='locale'"
-# eher INSERT into, weil noch nicht vorhanden
-#sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='5' where key='sync.target'"
-#sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_url' where key='sync.5.path'"
-#sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_username' where key='sync.5.username'"
-#sqlite3 $HOME/.config/joplin-desktop/database.sqlite "UPDATE settings SET value='$joplin_webdav_password' where key='sync.5.password'"
